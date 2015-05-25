@@ -1,0 +1,20 @@
+<h1>Add new post</h1>
+<?php
+
+$form = $this->form;
+
+$form->prepare();
+
+echo $this->form()->openTag($form);
+echo $this->formHidden($form->get('id'));
+echo $this->formRow($form->get('title'));
+echo $this->formHidden($form->get('slug'));
+echo '<br>';
+echo $this->formRow($form->get('category'));
+echo '<br>';
+echo $this->formRow($form->get('content'));
+
+echo '<br>';
+echo $this->formInput($form->get('submit'));
+echo $this->form()->closeTag($form);
+?>

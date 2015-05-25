@@ -1,0 +1,3 @@
+<?php foreach ($categories as $category) : ?>
+	<h1><a href="<?php echo $this->url('category',array('action'=>'viewposts','id'=>$category->getId(),'slug'=>$category->getSlug()))?>"><?php echo $category->getName()?></a></h1>
+<?php endforeach; ?>

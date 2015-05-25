@@ -1,0 +1,5 @@
+<h1><?php echo $category->getName()?></h1>
+<?php foreach ($posts as $post) :?>
+	<h1><a href="<?php echo $this->url('post',array('action'=>'view','id'=>$post->getId(),'slug'=>$post->getSlug())) ?>"><?php echo $post->getTitle() ?></a></h1>
+<p><?php echo $this->body_helper($post->getContent(), 100) ?></p>
+<?php endforeach;?>
