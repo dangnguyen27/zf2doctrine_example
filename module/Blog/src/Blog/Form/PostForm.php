@@ -35,6 +35,9 @@ class PostForm extends Form
 		$this->add(array(
 			'name' => 'content',
 			'type' => 'textarea',
+			'attributes' => array(
+				'id' => 'body-text',
+			),
 			'options' => array('label'=>'Content')
 		));
 

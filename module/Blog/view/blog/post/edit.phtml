@@ -1,3 +1,17 @@
+<?php 
+
+echo $this->headScript()
+// ->prependFile($this->basePath() . '/js/ckeditor/ckeditor.js')
+						->prependFile($this->basePath() . '/js/summernote.min.js');
+
+?>
+
+<?php
+ echo $this->headLink() ->prependStylesheet($this->basePath() . '/css/summernote.css')
+                        ->prependStylesheet($this->basePath() . '/css/font-awesome.min.css')
+                        
+
+ ?>
 <h1>Add new post</h1>
 <?php
 
@@ -17,4 +31,12 @@ echo $this->formRow($form->get('content'));
 echo '<br>';
 echo $this->formInput($form->get('submit'));
 echo $this->form()->closeTag($form);
-?>
+?><!-- 
+<script>CKEDITOR.replace('content')</script> -->
+<script>$(document).ready(function() {
+  $('#body-text').summernote({
+  	height: 350,
+  });
+
+});
+</script>
