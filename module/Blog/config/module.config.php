@@ -82,7 +82,10 @@ return array(
     * view helper ( đây là class hỗ trợ việc hiển thị body của bài viết với số lượng ký tự nhất định)
     */
     'view_helper' => array(
-        'invokables' => array('body_helper' => 'Blog\View\Helper\BodyHelper'),
+        'invokables' => array(
+        	'body_helper' => 'Blog\View\Helper\BodyHelper',
+        	'thumbnail_helper' => 'Blog\View\Helper\ThumbnailHelper'
+        ),
     ),
 
 );

@@ -1,3 +1,4 @@
+
 <?php foreach ($categories as $category) :?>
 	<h3><a href="<?php echo $this->url('category',array('action'=>'viewposts','id'=>$category->getId(),'slug'=>$category->getSlug()))?>"><?php echo $category->getName(); ?></a></h3>
 <?php endforeach; ?>
@@ -6,6 +7,7 @@
 
 <?php foreach ($posts as $post) : ?>
 	<h1><a href="<?php echo $this->url('post', array('action'=>'view','id'=>$post->getId(),'slug'=>$post->getSlug())) ?>"><?php echo $post->getTitle()?></a></h1>
+	<img src="<?php echo $this->thumbnail_helper($post->getContent()) ?>"/>
 	<p><?php echo $this->body_helper($post->getContent(), 100)?></p>
 	<br>
 	<a href="<?php echo $this->url('post',array('action'=>'edit','id'=>$post->getId(),'slug'=>$post->getSlug()))?>">Edit</a> |

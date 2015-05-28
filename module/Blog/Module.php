@@ -38,6 +38,10 @@ class Module
                  'body_helper'=>function($sm) {
                     $helper = new View\Helper\BodyHelper;
                     return $helper;
+                 },
+                 'thumbnail_helper' => function($sm) {
+                    $helper = new View\Helper\ThumbnailHelper;
+                    return $helper;
                  }
              ),
          );
