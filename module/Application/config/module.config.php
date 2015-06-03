@@ -99,4 +99,7 @@ return array(
             ),
         ),
     ),
+    'moduleLayouts' => array(
+        'Application' => 'layout/application.phtml'
+    )
 );

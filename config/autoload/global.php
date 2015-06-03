@@ -22,4 +22,9 @@ return array(
           'user'     => 'root',
           'password' => 'root',
           'dbname'   => 'learnzf2',
-)))));
+)))),
+  'moduleLayouts' => array(
+    'Application' => 'layout/layout.phtml',
+    'Blog' => 'layout/blog.phtml',
+  ),
+);

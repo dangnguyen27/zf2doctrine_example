@@ -1,2 +1,20 @@
-<h1><?php echo $post->getTitle()?></h1>
-<p><?php echo $post->getContent()?></p>
+<div class="wrapper">
+  <div id="breadcrumb">
+    <ul>
+      <li><a href="<?php echo $this->url('home')?>">Home</a></li>
+      <li>&#187;</li>
+      <li><a href="<?php echo $this->url('post')  ?>">Tin tức</a></li>
+      <li>&#187;</li>
+      <li class="current"><a href=""><?php //echo $category->getName()?></a></li>
+    </ul>
+  </div>
+</div>
+<div class="wrapper">
+  <div class="container">
+    <div class="content">
+      <h1><?php echo $post->getTitle() ?></h1>
+      <p><?php echo $post->getContent() ?>
+    </div>
+    <br class="clear" />
+  </div>
+</div>

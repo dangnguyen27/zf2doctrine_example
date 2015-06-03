@@ -3,51 +3,35 @@
 * Cấu hình routes, các controller thực hiện 
 */
 
-namespace Blog;
+namespace User;
 
 return array(
 
 	'controllers' => array(
 		'invokables'=>array(
-			'Blog\Controller\Post' => 'Blog\Controller\PostController', // 
-			'Blog\Controller\Category' => 'Blog\Controller\CategoryController'
+			'User\Controller\User' => 'User\Controller\UserController', // 
+			
 		)
 	),
 
 	'router' => array( //router là 1 mảng gồm nhiều route
 		'routes' => array(
-			'post' => array(
+			'frontend-user' => array(
 				'type' => 'segment',
 				'options' => array(
-					'route' => '/post[/:action][/:id][/:slug]' ,//
+					'route' => '/user[/:action][/:id][/:username]' ,//
 					'constraints' => array(
 						'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                         'id' => '[0-9]+',
-                        'slug' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'username' => '[a-zA-Z][a-zA-Z0-9_-]*',
 					),
 					'defaults' => array(
-						'controller' => 'Blog\Controller\Post',
-						'action' => 'index'
+						'controller' => 'User\Controller\User',
+						'action' => 'login'
 					)
 				)
 			),
 
-			'category' => array(
-				'type' => 'segment',
-				'options' => array(
-					'route' => '/category[/:action][/:id][/:slug]' ,//
-					'constraints' => array(
-						'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                        'id' => '[0-9]+',
-                        'slug' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                        
-					),
-					'defaults' => array(
-						'controller' => 'Blog\Controller\Category',
-						'action' => 'index'
-					)
-				)
-			)
 		) 
 	),
 
@@ -65,10 +49,7 @@ return array(
 		)
 	),
 
-	'moduleLayouts' => array(
-		'Blog' => 'layout/blog.phtml'
-	),
-
+	
 	/**
 	*Cấu hình module doctrine (đây là module cho phép thao tác trên dữ liệu tiện lợi, sử dụng các bảng trong CSDL như các đối tượng)
 	*/
@@ -87,14 +68,5 @@ return array(
         )
     ),
 
-    /**
-    * view helper ( đây là class hỗ trợ việc hiển thị body của bài viết với số lượng ký tự nhất định)
-    */
-    'view_helper' => array(
-        'invokables' => array(
-        	'body_helper' => 'Blog\View\Helper\BodyHelper',
-        	'thumbnail_helper' => 'Blog\View\Helper\ThumbnailHelper'
-        ),
-    ),
-
+   
 );

@@ -1,6 +1,6 @@
 <?php
 
-namespace Blog;
+namespace User;
 
 class Module
 {
@@ -26,26 +26,12 @@ class Module
             ),
             'Zend\Loader\StandardAutoloader' => array(
                 'namespaces' => array(
-                    __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__, //tương đương với 'Blog' => Blog/src/Blog
+                    __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
                 ),
             ),
         );
 	}
 
-	public function getViewHelperConfig() 
-	{
-         return array(
-             'factories'=>array(
-                 'body_helper'=>function($sm) {
-                    $helper = new View\Helper\BodyHelper;
-                    return $helper;
-                 },
-                 'thumbnail_helper' => function($sm) {
-                    $helper = new View\Helper\ThumbnailHelper;
-                    return $helper;
-                 }
-             ),
-         );
-     }
+	
 
 }

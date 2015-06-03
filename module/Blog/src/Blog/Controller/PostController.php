@@ -22,9 +22,26 @@ class PostController extends EntityUsingController
 		$em = $this->getEntityManager() ;// gọi entitymanager
 
 		$posts = $em->getRepository('Blog\Entity\Post')->findBy(array(),array('createdDate'=>'DESC'));
-		$categories = $em->getRepository('Blog\Entity\Category')->findBy(array(),array('name'=>'ASC'));
+		$categories = $em->getRepository('Blog\Entity\Category')->findBy(array());
+
+		$postnewests = array();
+
+		$sum =0;
+		$i=0;
+
+		foreach ($categories as $category) 
+		{
+			$postnewests['postnewests'.$i] = $em->getRepository('Blog\Entity\Post')->findBy(array('category'=>$category->getId()),array('createdDate'=>'DESC'),1);
+			$sum++;
+			$i++;
+		}
 		
-		return new ViewModel(array('posts'=>$posts,'categories'=>$categories));
+		// print "<pre>";
+		// print_r ($postnewests);
+		// print "</pre>";
+		// exit();
+		
+		return new ViewModel($postnewests+array('posts'=>$posts,'categories'=>$categories, 'sum'=>$sum));
 	}
 
 	public function viewAction()
@@ -33,12 +50,12 @@ class PostController extends EntityUsingController
 
 		if ($this->params('id')>0) {
 			$post = $this->getEntityManager()->getRepository('Blog\Entity\Post')->find($this->params('id'));
+
+			$category = $this->getEntityManager()->getRepository('Blog\Entity\Category')->findBy(array('id'=>$post->getCategory()));
 		}
 
-		// var_dump($post);
-		// exit();
 
-		return new ViewModel(array('post'=>$post));
+		return new ViewModel(array('post'=>$post,'category'=>$category));
 	}
 
 	public function addAction()
@@ -53,17 +70,21 @@ class PostController extends EntityUsingController
 		if ($request->isPost()) {
 			$form->setInputFilter($post->getInputFilter());
 			
-			// print "<pre>";
-			// var_dump($request->getPost());
-			// print "</pre>";
-			// exit();
+			
 			
 			$form->setData($request->getPost());
+
+
+			exit();
 
 			if ($form->isValid()) {
 				$em = $this->getEntityManager();
 				
 				$em->persist($post);
+				// print "<pre>";
+				// var_dump($post);
+				// print "</pre>";
+				
 				$em->flush();
 
 				return $this->redirect()->toRoute('post');

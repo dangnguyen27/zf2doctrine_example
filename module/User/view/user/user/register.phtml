@@ -1,0 +1,20 @@
+<?php
+
+$form = $this->form;
+
+$form->prepare();
+
+echo $this->form()->openTag($form);
+echo $this->formHidden($form->get('id'));
+echo $this->formRow($form->get('username'));
+echo '<br>';
+echo $this->formRow($form->get('password'));
+echo '<br>';
+echo $this->formRow($form->get('email'));
+
+echo '<br>';
+echo $this->formRow($form->get('avatar'));
+echo '<br>';
+echo $this->formInput($form->get('submit'));
+echo $this->form()->closeTag($form);
+?>
